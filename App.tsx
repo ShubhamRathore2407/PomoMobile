@@ -1,18 +1,18 @@
 import React from 'react';
-import {StyleSheet, View, Text } from 'react-native';
-
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Text>test</Text>
-    </View>
-  );
+import 'react-native-gesture-handler';
+import Navigation from './src/navigation';
+export type RootStackParamList = {
+  MainScreen: undefined;
+  MyTasks: undefined;
+  Profile: undefined;
+  Stats:undefined;
 };
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-export default App;
+
+export default function App() {  
+  // const {RealmProvider} = TaskRealmContext;    
+  return (
+    <>
+      <Navigation />
+    </>
+  );
+}
