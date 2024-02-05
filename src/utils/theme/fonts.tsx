@@ -19,5 +19,8 @@ export default {
       thin: "Montserrat-Thin",
       thinItalic: "Montserrat-ThinItalic",
     },
+    pacifico : {
+      regular : "Pacifico-Regular"
+    },
   };
   

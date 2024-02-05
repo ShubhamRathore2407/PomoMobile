@@ -2,9 +2,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import TasksScreen from "../../screens/tasks/mainTasksScreen";
 import StatsScreen from "../../screens/stats/mainStatsScreen/index.tsx";
-import ProfileScreen from "../../screens/profile/profileScreen";
+import ProfileScreen from "../../screens/profile/mainProfileScreen/index.tsx";
 
-import { palette } from "../../utils/theme/themes";
+import { brand, palette } from "../../utils/theme/themes";
 import { SCREENS } from "../../utils/constants/constants";
 import { renderTabIcon } from "../Icons/tabIcon/index.tsx";
 
@@ -13,6 +13,9 @@ const Tab = createBottomTabNavigator();
 export const RenderTabNavigation = () => {
     return (
         <Tab.Navigator
+            sceneContainerStyle={{
+                backgroundColor:brand.primaryMain
+            }}
             screenOptions={({ route }) => ({
                 headerShown: false,
                 tabBarIcon: ({ focused, color, size }) =>
@@ -32,7 +35,7 @@ export const RenderTabNavigation = () => {
                 },
                 tabBarLabelStyle: {
                     fontSize: 12
-                }
+                },
             })}
         >
             <Tab.Screen name={SCREENS.TASKS} component={TasksScreen} />

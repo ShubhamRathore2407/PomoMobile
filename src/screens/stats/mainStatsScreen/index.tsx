@@ -1,12 +1,14 @@
 import React from 'react'
-import { SafeAreaView, Text } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import Header from '../../../components/header'
+import Content from '../content'
+import styles from '../styles'
 
 const StatsScreen = () => {
   return (
-    <SafeAreaView style={{backgroundColor:"#18122B"}}>
+    <SafeAreaView style={styles.container}>
       <Header />
-      <Text>Stats Screen</Text>
+      <Content />
     </SafeAreaView>
   )
 }

@@ -17,7 +17,6 @@ export default StyleSheet.create<Props>({
     },
     button: {
         borderColor: "black",
-        // backgroundColor: "gray",
         padding: 5,
     },
     buttonText: {

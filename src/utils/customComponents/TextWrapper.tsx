@@ -3,7 +3,6 @@ import RNText, { IRNTextProps } from "@freakycoder/react-native-custom-text";
 /**
  * ? Local Imports
  */
-import fonts from "../theme/fonts";
 import { HeaderLevel } from "../constants/constants";
 
 interface ITextWrapperProps extends IRNTextProps {
@@ -14,17 +13,17 @@ interface ITextWrapperProps extends IRNTextProps {
 }
 
 const headerStyles: Record<HeaderLevel, any> = {
-  h1: { fontFamily: fonts.montserrat.bold, fontSize: 24 },
-  h2: { fontFamily: fonts.montserrat.bold, fontSize: 20 },
-  h3: { fontFamily: fonts.montserrat.bold, fontSize: 18 },
-  h4: { fontFamily: fonts.montserrat.bold, fontSize: 16 },
-  h5: { fontFamily: fonts.montserrat.bold, fontSize: 14 },
-  h6: { fontFamily: fonts.montserrat.bold, fontSize: 12 },
+  Large: { fontSize: 32 },
+  h1: { fontSize: 24 },
+  h2: { fontSize: 20 },
+  h3: { fontSize: 18 },
+  h4: { fontSize: 16 },
+  h5: { fontSize: 14 },
+  h6: { fontSize: 12 },
 };
 
-
 const TextWrapper: React.FC<ITextWrapperProps> = ({
-  fontFamily = fonts.montserrat.regular,
+  fontFamily,
   color = "#757575",
   children,
   headerLevel,

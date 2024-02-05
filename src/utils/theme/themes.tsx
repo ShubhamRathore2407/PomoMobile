@@ -1,5 +1,3 @@
-import { DefaultTheme } from "@react-navigation/native";
-
 export const palette = {
   primary: "#0564d4",
   secondary: "#ff6a00",
@@ -31,29 +29,13 @@ export const palette = {
   radium: "#b1ff00",
   radiumLight: "#daf1a3",
   black: "rgba(0,0,0,1)",
-  blackLight: "rgba(255, 255, 255, 0.1)"
+  blackLight: "rgba(255, 255, 255, 0.1)",
+  green:"#519872",
+  red:"white"
 };
 
-// export const LightTheme: ExtendedTheme = {
-//   dark: false,
-//   colors: {
-//     ...DefaultTheme.colors,
-//     ...palette,
-//   },
-// };
-
-// export const DarkTheme: ExtendedTheme = {
-//   ...DefaultTheme,
-//   colors: {
-//     ...LightTheme.colors,
-//     background: palette.black,
-//     foreground: palette.white,
-//     text: palette.white,
-//     tabBar: palette.black,
-//     iconWhite: palette.black,
-//     iconBlack: palette.white,
-//     dynamicBackground: palette.dynamicBlack,
-//     shadow: palette.transparent,
-//     borderColor: palette.borderColorDark,
-//   },
-// };
+export const brand = {
+  primaryMain: "rgba(0,0,0,1)",
+  primaryMainLight:"rgba(255,255,255,0.1)",
+  secondaryMain : "#b1ff00",
+}

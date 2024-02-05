@@ -2,43 +2,47 @@ import React from 'react';
 import { Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 
 import TextWrapper from "../../utils/customComponents/TextWrapper";
-import fonts from '../../utils/theme/fonts';
 import { HeaderLevel } from '../../utils/constants/constants';
-import WelcomeHeaderIcon from '../Icons/welcomeHeaderIcon'; 
+import WelcomeHeaderIcon from '../Icons/welcomeHeaderIcon';
 
 import styles from "./styles"
 
 interface Props {
-    name?: string;
+    title?: string;
     description?: string;
     headerLevel?: HeaderLevel;
-    bold?: boolean;
     hasButton?: boolean;
     buttonTitle?: string;
     buttonStyles?: ViewStyle;
-    textColor?:string
+    titleColor?: string
     descriptionColor?: string;
     padding?: number
     customStyles?: ViewStyle
+    iconName?:string
+    fontFamily?:string | ""
 }
 
-const WelcomeHeader: React.FC<Props> = ({ bold, description, headerLevel, name, hasButton, buttonTitle, buttonStyles, textColor, descriptionColor, customStyles }) => {
+const WelcomeHeader: React.FC<Props> = ({ description, headerLevel, title, hasButton, buttonTitle, buttonStyles, titleColor, descriptionColor, customStyles, iconName, fontFamily }) => {
     return (
         <View style={[styles.container, customStyles]}>
             <View>
-                <TextWrapper headerLevel={headerLevel} bold={bold} color={textColor}>
-                    {name}
-                </TextWrapper>
-                <TextWrapper fontFamily={fonts.montserrat.lightItalic} color={descriptionColor}>
-                    {description}
-                </TextWrapper>
+                {title &&
+                    <TextWrapper fontFamily={fontFamily} headerLevel={headerLevel} color={titleColor}>
+                        {title}
+                    </TextWrapper>
+                }
+                {description &&
+                    <TextWrapper color={descriptionColor}>
+                        {description}
+                    </TextWrapper>
+                }
             </View>
             <View>
                 {hasButton &&
                     <TouchableOpacity style={[styles.button, buttonStyles]}>
                         {buttonTitle ?
-                            <Text style={styles.buttonText}>{buttonTitle}</Text> : 
-                            <WelcomeHeaderIcon />
+                            <Text style={styles.buttonText}>{buttonTitle}</Text> :
+                            iconName && <WelcomeHeaderIcon iconName={iconName} />
                         }
                     </TouchableOpacity>
                 }
