@@ -1,9 +1,8 @@
-// StatsNavigation.js
-import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import StatsList from "../statsList";
+
 import { brand, palette } from "../../../utils/theme/themes";
 import { TaskType } from "../../../services/models";
+import StatsList from "../statsList";
 
 const Tab = createBottomTabNavigator();
 

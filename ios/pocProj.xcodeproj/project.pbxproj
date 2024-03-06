@@ -17,6 +17,8 @@
 		D37ED0CB5765418F94EB235A /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91CD5DE021C94F94B19A74A9 /* DancingScript-VariableFont_wght.ttf */; };
 		CE427686ED3542C8B3B3EAE2 /* ProtestRiot-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7451180E49A2409B8C7D7AAA /* ProtestRiot-Regular.ttf */; };
 		F75E34583EF64CDEA8F2BD8E /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A90EC6D08C0A4A8E9C324800 /* Pacifico-Regular.ttf */; };
+		CD1C0D086B49479995E95E5A /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E556B8987C0144199B81FCCB /* Roboto-BlackItalic.ttf */; };
+		FC0B7B5482074C4D9012D3C1 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D51D60495DB4EC4A6C90608 /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		91CD5DE021C94F94B19A74A9 /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "DancingScript-VariableFont_wght.ttf"; path = "../assets/fonts/DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		7451180E49A2409B8C7D7AAA /* ProtestRiot-Regular.ttf */ = {isa = PBXFileReference; name = "ProtestRiot-Regular.ttf"; path = "../assets/fonts/ProtestRiot-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		A90EC6D08C0A4A8E9C324800 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; name = "Pacifico-Regular.ttf"; path = "../assets/fonts/Pacifico-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E556B8987C0144199B81FCCB /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-BlackItalic.ttf"; path = "../assets/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8D51D60495DB4EC4A6C90608 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 				91CD5DE021C94F94B19A74A9 /* DancingScript-VariableFont_wght.ttf */,
 				7451180E49A2409B8C7D7AAA /* ProtestRiot-Regular.ttf */,
 				A90EC6D08C0A4A8E9C324800 /* Pacifico-Regular.ttf */,
+				E556B8987C0144199B81FCCB /* Roboto-BlackItalic.ttf */,
+				8D51D60495DB4EC4A6C90608 /* Roboto-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -264,6 +270,8 @@
 				D37ED0CB5765418F94EB235A /* DancingScript-VariableFont_wght.ttf in Resources */,
 				CE427686ED3542C8B3B3EAE2 /* ProtestRiot-Regular.ttf in Resources */,
 				F75E34583EF64CDEA8F2BD8E /* Pacifico-Regular.ttf in Resources */,
+				CD1C0D086B49479995E95E5A /* Roboto-BlackItalic.ttf in Resources */,
+				FC0B7B5482074C4D9012D3C1 /* Roboto-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

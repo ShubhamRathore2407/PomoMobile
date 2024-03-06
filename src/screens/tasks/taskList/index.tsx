@@ -1,18 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, View} from 'react-native';
-import TaskItem from '../taskItem';
+import {FlatList, Text, View} from 'react-native';
 import {useRealm} from '@realm/react';
+
 import {Status, TaskItemProps} from '../../../services/models';
 import {getTodayTasks} from '../../../utils/functions/functions';
-import styles from './styles';
+import TaskItem from '../taskItem';
+
+import styles, { centeredStyles } from './styles';
 
 const TaskList = () => {
   const realm = useRealm();
-  const [taskList, setTaskList] = useState<any>();
+  const [taskList, setTaskList] = useState<any>([]);
   useEffect(() => {
     const tasks = realm.objects<any>('Task');
     const filteredTasks = getTodayTasks(tasks);
-
+    
     setTaskList(filteredTasks);
   }, []);
 
@@ -45,6 +47,16 @@ const TaskList = () => {
       setTaskList(filteredTasks);
     }
   };
+
+  if (taskList?.length === 0) {
+    return (
+      <View style={centeredStyles.container}>
+        <Text style={centeredStyles.text}>
+          Add tasks
+        </Text>
+      </View>
+    );
+  }
   return (
     <View style={styles.listContainer}>
       <FlatList

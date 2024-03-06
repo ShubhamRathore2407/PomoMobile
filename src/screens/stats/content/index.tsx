@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
 import {View} from 'react-native';
+
 import WelcomeHeader from '../../../components/welcomeHeader';
 import {fontSize, palette} from '../../../utils/theme/themes';
-import fonts from '../../../utils/theme/fonts';
 import StatsNavigation from '../statsNavigation';
+import fonts from '../../../utils/theme/fonts';
+
 import styles from './styles';
 
 const Content = () => {

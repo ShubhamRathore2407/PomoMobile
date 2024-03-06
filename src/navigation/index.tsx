@@ -1,17 +1,23 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
-import { isReadyRef, navigationRef } from "react-navigation-helpers";
+import React, {useEffect, useState} from 'react';
+import {isReadyRef, navigationRef} from 'react-navigation-helpers';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
 
-import { SCREENS } from "../utils/constants/constants";
-import { RenderTabNavigation } from "../components/tabNavigation";
+import {RenderTabNavigation} from '../components/tabNavigation';
+import {SCREENS} from '../utils/constants/constants';
+import SplashScreen from '../screens/splashScreen';
 
 const Stack = createStackNavigator();
 
 const Navigation = () => {
-  
-  React.useEffect((): any => {
-    return () => (isReadyRef.current = false);
+  const [isSplashVisible, setIsSplashVisible] = useState(true); 
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsSplashVisible(false);
+    }, 4000);
+
+    return () => clearTimeout(timer); 
   }, []);
 
   return (
@@ -19,11 +25,17 @@ const Navigation = () => {
       ref={navigationRef}
       onReady={() => {
         isReadyRef.current = true;
-      }}
-    >
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name={SCREENS.MAIN_TASKS} component={RenderTabNavigation} />
-      </Stack.Navigator>
+      }}>
+      {isSplashVisible ? (
+        <SplashScreen />
+      ) : (
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen
+            name={SCREENS.MAIN_TASKS}
+            component={RenderTabNavigation}
+          />
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 };

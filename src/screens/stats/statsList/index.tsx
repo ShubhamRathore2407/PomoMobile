@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Text, View, FlatList, ScrollView} from 'react-native';
+import {useRealm} from '@realm/react';
 
 import {
   filterOutFutureTasks,
@@ -8,10 +9,10 @@ import {
   sortBasedOnTaskType,
 } from '../../../utils/functions/functions';
 import {GroupTasksByDateProps, TaskType} from '../../../services/models';
-import TaskItem from '../taskItem';
-import styles from './styles';
-import {useRealm} from '@realm/react';
 import {centeredStyles} from '../content/styles';
+import TaskItem from '../taskItem';
+
+import styles from './styles';
 
 interface Props {
   type: TaskType;

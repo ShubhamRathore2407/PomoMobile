@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 
 import {Status, TaskItemProps} from '../../../services/models';
 import WelcomeHeader from '../../../components/welcomeHeader';
 import Timer from '../../../components/timer';
 import {palette} from '../../../utils/theme/themes';
 import Icon, {IconType} from 'react-native-dynamic-vector-icons';
+
 import styles from './styles';
 
 interface Props {

@@ -7,7 +7,7 @@ import { Task } from './src/realm/TaskModel';
 
 export default function App() {  
   return (
-    <RealmProvider schema={[Profile, Task]} schemaVersion={12} >
+    <RealmProvider schema={[Profile, Task]} schemaVersion={13} >
       <Navigation />
     </RealmProvider>
   );

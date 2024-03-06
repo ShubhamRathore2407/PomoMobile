@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import {Text, TextInput, View, TouchableOpacity, Platform} from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker'; // For date and time picker
+import {useRealm} from '@realm/react';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import Icon, {IconType} from 'react-native-dynamic-vector-icons';
 
 import {
   numberToDayMap,
   numberToMonthMap,
 } from '../../../utils/constants/constants';
-import {palette} from '../../../utils/theme/themes';
 import {Status, TaskItemProps} from '../../../services/models';
+import {palette} from '../../../utils/theme/themes';
+import {Task} from '../../../realm/TaskModel';
 
 import styles from './styles';
-import {useRealm} from '@realm/react';
-import {Task} from '../../../realm/TaskModel';
 
 type Props = {
   setShowForm: any;

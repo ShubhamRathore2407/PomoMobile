@@ -12,6 +12,14 @@
     {
       "path": "assets/fonts/ProtestRiot-Regular.ttf",
       "sha1": "e8cec983abf34dcdca59df4a90bce74969fa564a"
+    },
+    {
+      "path": "assets/fonts/Roboto-BlackItalic.ttf",
+      "sha1": "03d6e3747d862385dbe48e8296385b9236101a62"
+    },
+    {
+      "path": "assets/fonts/Roboto-Regular.ttf",
+      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
     }
   ]
 }

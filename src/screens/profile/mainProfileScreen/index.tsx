@@ -1,8 +1,9 @@
-import React from 'react'
-import { SafeAreaView } from 'react-native'
-import Header from '../../../components/header'
-import Content from '../content'
-import styles from './styles'
+import {SafeAreaView} from 'react-native';
+
+import Header from '../../../components/header';
+import Content from '../content';
+
+import styles from './styles';
 
 const TasksScreen = () => {
   return (
@@ -10,7 +11,7 @@ const TasksScreen = () => {
       <Header />
       <Content />
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default TasksScreen
+export default TasksScreen;

@@ -1,10 +1,9 @@
-import React from 'react'
 import { Text, View } from 'react-native'
 
 import { Status, TaskItemProps } from '../../../services/models'
+import { palette } from '../../../utils/theme/themes'
 
 import styles from './styles'
-import { palette } from '../../../utils/theme/themes'
 
 interface Props {
   item : TaskItemProps

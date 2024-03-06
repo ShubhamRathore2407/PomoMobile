@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Text, TextInput, View, TouchableOpacity} from 'react-native';
 import Icon, {IconType} from 'react-native-dynamic-vector-icons';
+import {useRealm} from '@realm/react';
 
 import {palette} from '../../../utils/theme/themes';
-
-import styles from './styles';
-import {useRealm} from '@realm/react';
 import {ProfileProps} from '../../../services/models';
 import {Profile} from '../../../realm/ProfileModel';
+
+import styles from './styles';
 
 type Props = {
   setShowForm: any;
@@ -24,7 +24,7 @@ const Form: React.FC<Props> = ({setShowForm}) => {
     const user: ProfileProps = {
       name,
       email,
-      phone : phone && phone?.length > 5 ? phone : '',
+      phone: phone && phone?.length > 5 ? phone : '',
       image,
     };
 

@@ -1,15 +1,23 @@
-import React, { useMemo, useState } from 'react'
-import { View } from 'react-native'
+import React, {useMemo, useState} from 'react';
+import Icon, {IconType} from 'react-native-dynamic-vector-icons';
+import {View} from 'react-native';
 
-import WelcomeHeader from '../../../components/welcomeHeader'
-import createStyles from "../styles"
-import { brand, fontSize, palette } from '../../../utils/theme/themes'
-import ProfileDetails from '../profileDetails'
-import fonts from '../../../utils/theme/fonts'
-import Form from '../form'
-import Icon, { IconType } from 'react-native-dynamic-vector-icons'
+import {brand, fontSize, palette} from '../../../utils/theme/themes';
+import WelcomeHeader from '../../../components/welcomeHeader';
+import ProfileDetails from '../profileDetails';
+import fonts from '../../../utils/theme/fonts';
+import Form from '../form';
 
-const EditIcon = () => <Icon type={IconType.Ionicons} name="pencil-outline" size={fontSize.large} color={brand.secondaryMain} />;
+import createStyles from '../styles';
+
+const EditIcon = () => (
+  <Icon
+    type={IconType.Ionicons}
+    name="pencil-outline"
+    size={fontSize.large}
+    color={brand.secondaryMain}
+  />
+);
 
 const Content = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -30,9 +38,7 @@ const Content = () => {
         buttonStyles={{backgroundColor: palette.blackLight}}
       />
       <ProfileDetails />
-      {showForm && (
-        <Form setShowForm={setShowForm} />
-      )}
+      {showForm && <Form setShowForm={setShowForm} />}
     </View>
   );
 };

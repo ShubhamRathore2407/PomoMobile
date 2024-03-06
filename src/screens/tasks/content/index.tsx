@@ -3,12 +3,12 @@ import {View} from 'react-native';
 
 import WelcomeHeader from '../../../components/welcomeHeader';
 import createStyles from '../styles';
+import Icon, {IconType} from 'react-native-dynamic-vector-icons';
+
 import {brand, fontSize, palette} from '../../../utils/theme/themes';
 import fonts from '../../../utils/theme/fonts';
-import Form from '../form';
-
-import Icon, {IconType} from 'react-native-dynamic-vector-icons';
 import TaskList from '../taskList';
+import Form from '../form';
 
 const AddIcon = () => (
   <Icon
