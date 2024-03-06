@@ -1,3 +1,13 @@
+export const fontSize = {
+  large : 32,
+  h1 : 24,
+  h2 : 20,
+  h3 : 18,
+  h4 : 16,
+  h5 : 14,
+  h6 : 12,
+}
+
 export const palette = {
   primary: "#0564d4",
   secondary: "#ff6a00",

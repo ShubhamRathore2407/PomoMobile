@@ -1,42 +1,90 @@
-import React, { useMemo } from 'react'
-import { StyleProp, View, ViewStyle } from 'react-native'
+import React, {useState} from 'react';
+import {View, TouchableOpacity, Text} from 'react-native';
 
-import createStyles from "../styles"
-import { TaskItemProps } from '../../../services/models';
+import {Status, TaskItemProps} from '../../../services/models';
 import WelcomeHeader from '../../../components/welcomeHeader';
-import { HeaderLevel } from '../../../utils/constants/constants';
 import Timer from '../../../components/timer';
-import { palette } from '../../../utils/theme/themes';
-// import CustomSwipeableWrapper from '../../../utils/customComponents/CustomSwipeableWrapper';
-
-type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
+import {palette} from '../../../utils/theme/themes';
+import Icon, {IconType} from 'react-native-dynamic-vector-icons';
+import styles from './styles';
 
 interface Props {
-    style?: CustomStyleProp;
-    data: TaskItemProps;
+  data: TaskItemProps;
+  onDeleteTask: any;
+  onCompleteTask: any;
+  onUndoCompleteTask: any;
 }
 
-const TaskItem: React.FC<Props> = ({ data }) => {
-    const styles = useMemo(() => createStyles(), []);
-    const { name, description } = data;
+const TaskItem: React.FC<Props> = ({
+  data,
+  onDeleteTask,
+  onCompleteTask,
+  onUndoCompleteTask,
+}) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [timeElapsed, setTimeElapsed] = useState<number>(
+    data.timeTaken ? data.timeTaken : 0,
+  );
+  const {title, description} = data;
 
-    return (
-        // <CustomSwipeableWrapper swipeSensitivity={50} onLeftSwipe={() => {console.log("left")}} onRightSwipe={() => (console.log("right"))}>
-            <View style={[styles.taskItem]}>
-                <WelcomeHeader
-                    title={name}
-                    description={description}
-                    headerLevel={HeaderLevel.H3}
-                    titleColor={palette.lightGray}
-                    descriptionColor={palette.gray}
-                    customStyles={{ marginBottom: 20 }}
-                />
-                <View style={styles.contentContainer}>
-                    <Timer initialTime={0} />
-                </View>
-            </View>
-        // </CustomSwipeableWrapper>
-    );
+  const handleClick = (data: TaskItemProps) => {
+    setIsPlaying(false);
+
+    data.status === Status.PENDING
+      ? onCompleteTask(data, timeElapsed)
+      : onUndoCompleteTask(data);
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.topContainer}>
+        <WelcomeHeader
+          title={title}
+          description={description}
+          titleStyles={{
+            color: palette.lightGray,
+            fontSize: 18,
+          }}
+          containerStyles={{padding: 0}}
+        />
+        <View>
+          <TouchableOpacity
+            onPress={() => onDeleteTask(data)}
+            style={styles.actionButton}>
+            <Icon
+              type={IconType.Ionicons}
+              name="trash-outline"
+              size={24}
+              color={palette.shadow}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => handleClick(data)}
+            style={styles.actionButton}>
+            <Icon
+              type={IconType.Ionicons}
+              name="checkmark-done-circle-outline"
+              size={24}
+              color={
+                data.status === Status.COMPLETED
+                  ? palette.radium
+                  : palette.white
+              }
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.timer}>
+        <Timer
+          data={data}
+          setTimeElapsed={setTimeElapsed}
+          timeElapsed={timeElapsed}
+          setIsPlaying={setIsPlaying}
+          isPlaying={isPlaying}
+        />
+      </View>
+    </View>
+  );
 };
 
-export default TaskItem
+export default TaskItem;

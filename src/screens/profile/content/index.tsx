@@ -1,29 +1,40 @@
-import React, { useMemo } from 'react'
-import { Text, View } from 'react-native'
+import React, { useMemo, useState } from 'react'
+import { View } from 'react-native'
 
 import WelcomeHeader from '../../../components/welcomeHeader'
-import { HeaderLevel } from '../../../utils/constants/constants'
 import createStyles from "../styles"
-import { palette } from '../../../utils/theme/themes'
+import { brand, fontSize, palette } from '../../../utils/theme/themes'
 import ProfileDetails from '../profileDetails'
 import fonts from '../../../utils/theme/fonts'
+import Form from '../form'
+import Icon, { IconType } from 'react-native-dynamic-vector-icons'
+
+const EditIcon = () => <Icon type={IconType.Ionicons} name="pencil-outline" size={fontSize.large} color={brand.secondaryMain} />;
 
 const Content = () => {
   const styles = useMemo(() => createStyles(), []);
+  const [showForm, setShowForm] = useState<boolean>(false);
+
   return (
     <View style={styles.contentContainer}>
       <WelcomeHeader
-        title='My Profile'
-        headerLevel={HeaderLevel.Large}
-        titleColor={palette.radium}
+        title="My Profile"
+        titleStyles={{
+          color: palette.radium,
+          fontFamily: fonts.pacifico.regular,
+          fontSize: fontSize.large,
+        }}
         hasButton
-        iconName='pencil-outline'
-        fontFamily={fonts.pacifico.regular}
-        buttonStyles={{ backgroundColor: palette.blackLight, borderRadius: 8 }}
-        customStyles={{ padding: 15, marginTop: 20, marginBottom: 10 }} />
+        ButtonIcon={EditIcon}
+        onButtonClick={() => setShowForm(true)}
+        buttonStyles={{backgroundColor: palette.blackLight}}
+      />
       <ProfileDetails />
+      {showForm && (
+        <Form setShowForm={setShowForm} />
+      )}
     </View>
-  )
-}
+  );
+};
 
-export default Content
+export default Content;

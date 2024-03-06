@@ -11,6 +11,8 @@ interface Style {
     forkContainer?: ViewStyle;
     listContainer?: ViewStyle;
     taskItem?: ViewStyle
+    topContainer?:ViewStyle
+    topContainerIcons?: ViewStyle
 }
 
 export default () => {
@@ -33,11 +35,6 @@ export default () => {
             width: 50,
             borderRadius: 30,
         },
-        listContainer: {
-            flex: 1,
-            marginTop: 20,
-            backgroundColor: palette.list
-        },
         contentContainer: {
             flex: 1,
         },
@@ -57,5 +54,13 @@ export default () => {
             flex: 1,
             overflow: 'hidden',
         },
+        topContainer: {
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems:"center"
+        },
+        topContainerIcons : {
+            gap:15,
+        }
     })
 }

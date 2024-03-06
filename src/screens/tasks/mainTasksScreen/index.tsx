@@ -6,10 +6,10 @@ import styles from './styles'
 
 const TasksScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Header />
-      <Content />
-    </SafeAreaView>
+      <SafeAreaView style={styles.container}>
+        <Header />
+        <Content />
+      </SafeAreaView>
   )
 }
 

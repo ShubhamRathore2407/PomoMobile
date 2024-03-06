@@ -1,13 +1,13 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-import { StatItemProps, Status } from '../../../services/models'
+import { Status, TaskItemProps } from '../../../services/models'
 
 import styles from './styles'
 import { palette } from '../../../utils/theme/themes'
 
 interface Props {
-  item : StatItemProps
+  item : TaskItemProps
 }
 const TaskItem:React.FC<Props> = ({item}) => {
   return (
@@ -15,12 +15,12 @@ const TaskItem:React.FC<Props> = ({item}) => {
       <Text style={styles.title}>{item.title}</Text>
       <View style={styles.detailsContainer}>
         <View style={styles.detailsRow}>
-          <Text style={styles.detailLabel}>Expected Time (min):</Text>
-          <Text style={styles.detailValue}>{item.expected}</Text>
+          <Text style={styles.detailLabel}>Target Time (min):</Text>
+          <Text style={styles.detailValue}>{item.targetTime}</Text>
         </View>
-       {item.timeTaken && <View style={styles.detailsRow}>
+        {item.status === Status.COMPLETED && <View style={styles.detailsRow}>
           <Text style={styles.detailLabel}>Time Taken (min):</Text>
-          <Text style={styles.detailValue}>{item.timeTaken}</Text>
+          <Text style={styles.detailValue}>{Math.round((item.timeTaken ?? 0) / 60)}</Text>
         </View>}
         {item.status && <View style={styles.detailsRow}>
           <Text style={styles.detailLabel}>Status:</Text>

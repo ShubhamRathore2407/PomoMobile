@@ -1,31 +1,48 @@
-import React, { useMemo } from 'react'
-import { View } from 'react-native'
+import React, {useMemo, useState} from 'react';
+import {View} from 'react-native';
 
-import WelcomeHeader from '../../../components/welcomeHeader'
-import { HeaderLevel } from '../../../utils/constants/constants'
-import TaskList from '../taskList'
-import createStyles from "../styles"
-import { palette } from '../../../utils/theme/themes'
-import fonts from '../../../utils/theme/fonts'
+import WelcomeHeader from '../../../components/welcomeHeader';
+import createStyles from '../styles';
+import {brand, fontSize, palette} from '../../../utils/theme/themes';
+import fonts from '../../../utils/theme/fonts';
+import Form from '../form';
+
+import Icon, {IconType} from 'react-native-dynamic-vector-icons';
+import TaskList from '../taskList';
+
+const AddIcon = () => (
+  <Icon
+    type={IconType.Ionicons}
+    name="add-outline"
+    size={fontSize.large}
+    color={brand.secondaryMain}
+  />
+);
 
 const Content = () => {
   const styles = useMemo(() => createStyles(), []);
-  return (
-    <View style={styles.contentContainer} >
-      <WelcomeHeader 
-        title='Hey User' 
-        description='Ready to complete your tasks!!' 
-        headerLevel={HeaderLevel.Large} 
-        hasButton 
-        iconName='add-sharp'
-        titleColor= {palette.radium} 
-        fontFamily={fonts.pacifico.regular}
-        descriptionColor={palette.lightGray} 
-        buttonStyles={{backgroundColor: palette.blackLight, borderRadius: 8}}
-        customStyles={{padding : 15, marginTop: 20, marginBottom: 10}} />
-      <TaskList />
-    </View>
-  )
-}
+  const [showForm, setShowForm] = useState<boolean>(false);
 
-export default Content
+  const handleButtonClick = () => setShowForm(true);
+
+  return (
+    <View style={styles.contentContainer}>
+      <WelcomeHeader
+        title="My Tasks"
+        titleStyles={{
+          color: palette.radium,
+          fontFamily: fonts.pacifico.regular,
+          fontSize: fontSize.large,
+        }}
+        hasButton
+        onButtonClick={handleButtonClick}
+        ButtonIcon={AddIcon}
+        buttonStyles={{backgroundColor: palette.blackLight}}
+      />
+      <TaskList />
+      {showForm && <Form setShowForm={setShowForm} />}
+    </View>
+  );
+};
+
+export default Content;

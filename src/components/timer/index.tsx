@@ -8,15 +8,18 @@ import {
 
 import styles from './styles';
 import { palette } from '../../utils/theme/themes';
+import { formatTime } from '../../utils/functions/functions';
+import { Status, TaskItemProps } from '../../services/models';
 
 interface Props {
-  initialTime: number;
+  data: TaskItemProps
+  setIsPlaying : any
+  isPlaying : boolean
+  setTimeElapsed : any
+  timeElapsed : number 
 }
 
-const Timer: React.FC<Props> = ({ initialTime }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [timeElapsed, setTimeElapsed] = useState(initialTime);
-
+const Timer: React.FC<Props> = ({ data, setIsPlaying, isPlaying, setTimeElapsed, timeElapsed }) => {
   useEffect(() => {
     const handleInterval = () => {
       if (isPlaying) {
@@ -29,14 +32,14 @@ const Timer: React.FC<Props> = ({ initialTime }) => {
   }, [isPlaying, timeElapsed]);
 
   const handlePlayPause = () => {
-    setIsPlaying((prevState) => !prevState);
+    setIsPlaying((prevState : boolean) => !prevState);
   };
 
-  const formattedTime = timeElapsed > 0 ? formatTime(timeElapsed) : '00:00';
+  const formattedTime = timeElapsed > 0 ? formatTime(timeElapsed) : '00:00:00';
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={handlePlayPause}>
+      <TouchableOpacity disabled={data.status === Status.COMPLETED} onPress={handlePlayPause}>
         <Icon
           style={styles.icon}
           color={isPlaying ? palette.pause : palette.play}
@@ -47,12 +50,6 @@ const Timer: React.FC<Props> = ({ initialTime }) => {
       <Text style={[styles.timer, { color: isPlaying ? palette.pause : palette.play }]}>{formattedTime}</Text>
     </View>
   );
-};
-
-const formatTime = (timeInSeconds: number) => {
-  const minutes = Math.floor(timeInSeconds / 60);
-  const seconds = timeInSeconds % 60;
-  return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 };
 
 export default Timer;

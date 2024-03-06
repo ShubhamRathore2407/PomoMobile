@@ -1,18 +1,14 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 import Navigation from './src/navigation';
-export type RootStackParamList = {
-  MainScreen: undefined;
-  MyTasks: undefined;
-  Profile: undefined;
-  Stats:undefined;
-};
+import { RealmProvider } from '@realm/react';
+import { Profile } from './src/realm/ProfileModel';
+import { Task } from './src/realm/TaskModel';
 
 export default function App() {  
-  // const {RealmProvider} = TaskRealmContext;    
   return (
-    <>
+    <RealmProvider schema={[Profile, Task]} schemaVersion={12} >
       <Navigation />
-    </>
+    </RealmProvider>
   );
 }

@@ -1,54 +1,59 @@
 import React from 'react';
-import { Text, TouchableOpacity, View, ViewStyle } from 'react-native';
+import {Text, TouchableOpacity, View, ViewStyle, TextStyle} from 'react-native';
 
-import TextWrapper from "../../utils/customComponents/TextWrapper";
-import { HeaderLevel } from '../../utils/constants/constants';
-import WelcomeHeaderIcon from '../Icons/welcomeHeaderIcon';
-
-import styles from "./styles"
+import TextWrapper from '../../utils/customComponents/TextWrapper';
+import styles from './styles';
 
 interface Props {
-    title?: string;
-    description?: string;
-    headerLevel?: HeaderLevel;
-    hasButton?: boolean;
-    buttonTitle?: string;
-    buttonStyles?: ViewStyle;
-    titleColor?: string
-    descriptionColor?: string;
-    padding?: number
-    customStyles?: ViewStyle
-    iconName?:string
-    fontFamily?:string | ""
+  title?: string;
+  description?: string;
+  hasButton?: boolean;
+  buttonTitle?: string;
+  onButtonClick?: () => void; 
+  buttonStyles?: ViewStyle;
+  buttonTextStyles?: TextStyle;
+  titleStyles?: TextStyle;
+  descriptionStyles?: TextStyle;
+  containerStyles?: ViewStyle; 
+  ButtonIcon?: React.ComponentType<any>;
 }
 
-const WelcomeHeader: React.FC<Props> = ({ description, headerLevel, title, hasButton, buttonTitle, buttonStyles, titleColor, descriptionColor, customStyles, iconName, fontFamily }) => {
-    return (
-        <View style={[styles.container, customStyles]}>
-            <View>
-                {title &&
-                    <TextWrapper fontFamily={fontFamily} headerLevel={headerLevel} color={titleColor}>
-                        {title}
-                    </TextWrapper>
-                }
-                {description &&
-                    <TextWrapper color={descriptionColor}>
-                        {description}
-                    </TextWrapper>
-                }
-            </View>
-            <View>
-                {hasButton &&
-                    <TouchableOpacity style={[styles.button, buttonStyles]}>
-                        {buttonTitle ?
-                            <Text style={styles.buttonText}>{buttonTitle}</Text> :
-                            iconName && <WelcomeHeaderIcon iconName={iconName} />
-                        }
-                    </TouchableOpacity>
-                }
-            </View>
-        </View>
-    )
-}
+const WelcomeHeader: React.FC<Props> = ({
+  title,
+  description,
+  hasButton = false,
+  buttonTitle,
+  onButtonClick,
+  buttonStyles,
+  buttonTextStyles,
+  titleStyles,
+  descriptionStyles,
+  containerStyles,
+  ButtonIcon,
+}) => {
+  return (
+    <View style={[styles.container, containerStyles]}>
+      <View>
+        {title && <TextWrapper style={[titleStyles]}>{title}</TextWrapper>}
+        {description && (
+          <TextWrapper style={[descriptionStyles]}>{description}</TextWrapper>
+        )}
+      </View>
+      {hasButton && (
+        <TouchableOpacity
+          onPress={onButtonClick}
+          style={[styles.button, buttonStyles]}>
+          {ButtonIcon ? (
+            <ButtonIcon />
+          ) : (
+            <Text style={[styles.buttonText, buttonTextStyles]}>
+              {buttonTitle}
+            </Text>
+          )}
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+};
 
 export default WelcomeHeader;

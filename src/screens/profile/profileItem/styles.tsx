@@ -1,28 +1,27 @@
 import { StyleSheet } from "react-native";
-import { palette } from "../../../utils/theme/themes";
+import { fontSize, palette } from "../../../utils/theme/themes";
 
 export default StyleSheet.create({
     container: {
         flexDirection: "row",
         backgroundColor: 'black',
         alignItems: "center",
-        gap: 12,
+        justifyContent:"flex-start",
+        gap: 20,
         paddingHorizontal: 50,
-        paddingVertical: 10,
-        marginVertical: 3,
+        paddingVertical: 5,
+        marginVertical: 5,
     },
     field: {
-        flex: 1,
         marginHorizontal: 10,
         marginBottom: 4,
     },
     title: {
         color: palette.title,
-        fontSize: 14,
+        fontSize: fontSize.h4,
     },
     value: {
         color: palette.borderColor,
-        fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: fontSize.h2,
     },
 });

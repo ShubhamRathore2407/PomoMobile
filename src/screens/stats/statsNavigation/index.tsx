@@ -48,14 +48,12 @@ const StatsNavigation = () => {
             paddingRight:40,
             fontWeight: "bold",
             letterSpacing:1,
-            // borderColor:palette.radium,
-            // borderWidth:1,
           },
           tabBarItemStyle: {
             marginBottom: 11,
             alignSelf: "center"
           },
-          tabBarIcon: () => null, // Hide icons
+          tabBarIcon: () => null,
         }}
       >
         <Tab.Screen name="Current" component={CurrentTasks} />
