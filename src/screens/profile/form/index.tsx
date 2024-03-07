@@ -18,14 +18,13 @@ const Form: React.FC<Props> = ({setShowForm}) => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>();
-  const [image, setImage] = useState<string>('');
 
   const handleSaveProfile = () => {
     const user: ProfileProps = {
       name,
       email,
       phone: phone && phone?.length > 5 ? phone : '',
-      image,
+      image: '',
     };
 
     const profile = realm.objects<any>('Profile')[0];
@@ -36,7 +35,7 @@ const Form: React.FC<Props> = ({setShowForm}) => {
           profile.name = name;
           profile.email = email;
           profile.phone = Number(phone);
-          profile.image = image;
+          profile.image;
         });
       } else {
         realm.write(() => {
@@ -56,64 +55,51 @@ const Form: React.FC<Props> = ({setShowForm}) => {
       setName(profile.name || '');
       setEmail(profile.email || '');
       setPhone(profile.phone === 0 ? '' : profile?.phone.toString());
-      setImage(profile.image);
     }
   }, []);
 
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      style={styles.blurOverlay}
-      onPress={() => setShowForm(false)}>
-      <View style={styles.formCard}>
-        <View style={styles.datePickerButton}>
-          <Icon
-            onPress={() => setShowForm(false)}
-            type={IconType.Ionicons}
-            name="close-outline"
-            size={26}
-            color="gray"
-          />
-          <View style={styles.saveContainer}>
-            <TouchableOpacity
-              onPress={handleSaveProfile}
-              style={styles.saveButton}>
-              <Text style={styles.saveButtonText}>Save</Text>
-            </TouchableOpacity>
-          </View>
+    <View style={styles.formCard}>
+      <View style={styles.datePickerButton}>
+        <Icon
+          onPress={() => setShowForm(false)}
+          type={IconType.Ionicons}
+          name="close-outline"
+          size={26}
+          color="gray"
+        />
+        <View style={styles.saveContainer}>
+          <TouchableOpacity
+            onPress={handleSaveProfile}
+            style={styles.saveButton}>
+            <Text style={styles.saveButtonText}>Save</Text>
+          </TouchableOpacity>
         </View>
-        <TextInput
-          style={styles.input}
-          placeholder="Name"
-          onChangeText={text => setName(text)}
-          value={name}
-          placeholderTextColor={palette.title}
-        />
-        <TextInput
-          style={[styles.input]}
-          placeholder="Email"
-          onChangeText={text => setEmail(text)}
-          value={email}
-          multiline
-          placeholderTextColor={palette.title}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Contact Number"
-          onChangeText={text => setPhone(text)}
-          value={phone?.toString()}
-          placeholderTextColor={palette.title}
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Image URL"
-          onChangeText={text => setImage(text)}
-          value={image}
-          placeholderTextColor={palette.title}
-        />
       </View>
-    </TouchableOpacity>
+      <TextInput
+        style={styles.input}
+        placeholder="Name"
+        onChangeText={text => setName(text)}
+        value={name}
+        placeholderTextColor={palette.title}
+      />
+      <TextInput
+        style={[styles.input]}
+        placeholder="Email"
+        onChangeText={text => setEmail(text)}
+        value={email}
+        multiline
+        placeholderTextColor={palette.title}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Contact Number"
+        onChangeText={text => setPhone(text)}
+        value={phone?.toString()}
+        placeholderTextColor={palette.title}
+        keyboardType="numeric"
+      />
+    </View>
   );
 };
 

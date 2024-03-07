@@ -1,14 +1,20 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState} from 'react';
+import {
+  Modal,
+  View,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import Icon, {IconType} from 'react-native-dynamic-vector-icons';
-import {View} from 'react-native';
 
 import {brand, fontSize, palette} from '../../../utils/theme/themes';
 import WelcomeHeader from '../../../components/welcomeHeader';
 import ProfileDetails from '../profileDetails';
 import fonts from '../../../utils/theme/fonts';
 import Form from '../form';
-
-import createStyles from '../styles';
+import styles from './styles';
+import ModalWrapper from '../../../utils/customComponents/ModalWrapper';
+import {BlurView} from '@react-native-community/blur';
 
 const EditIcon = () => (
   <Icon
@@ -20,7 +26,6 @@ const EditIcon = () => (
 );
 
 const Content = () => {
-  const styles = useMemo(() => createStyles(), []);
   const [showForm, setShowForm] = useState<boolean>(false);
 
   return (
@@ -38,7 +43,13 @@ const Content = () => {
         buttonStyles={{backgroundColor: palette.blackLight}}
       />
       <ProfileDetails />
-      {showForm && <Form setShowForm={setShowForm} />}
+
+      <ModalWrapper
+        isVisible={showForm}
+        title={'Update Profile'}
+        onClose={() => setShowForm(false)}>
+        <Form setShowForm={setShowForm} />
+      </ModalWrapper>
     </View>
   );
 };

@@ -9,6 +9,7 @@ import {brand, fontSize, palette} from '../../../utils/theme/themes';
 import fonts from '../../../utils/theme/fonts';
 import TaskList from '../taskList';
 import Form from '../form';
+import ModalWrapper from '../../../utils/customComponents/ModalWrapper';
 
 const AddIcon = () => (
   <Icon
@@ -40,7 +41,12 @@ const Content = () => {
         buttonStyles={{backgroundColor: palette.blackLight}}
       />
       <TaskList />
-      {showForm && <Form setShowForm={setShowForm} />}
+      <ModalWrapper
+        isVisible={showForm}
+        title={'Add Task'}
+        onClose={() => setShowForm(false)}>
+        <Form setShowForm={setShowForm} />
+      </ModalWrapper>
     </View>
   );
 };

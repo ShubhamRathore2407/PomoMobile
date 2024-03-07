@@ -72,9 +72,9 @@ const ProfileDetails = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={handleImageSelect}>
-        <View style={styles.imageContainer}>
-          <View style={styles.outerImageContainer}>
+      <View style={styles.imageContainer}>
+        <View style={styles.outerImageContainer}>
+          <TouchableOpacity onPress={handleImageSelect}>
             <View style={styles.innerImageContainer}>
               <Image
                 source={{
@@ -83,9 +83,9 @@ const ProfileDetails = () => {
                 style={styles.profileImage}
               />
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+      </View>
       <View>
         <ProfileItem field="name" value={profile?.name} />
         <ProfileItem field="email" value={profile?.email} />

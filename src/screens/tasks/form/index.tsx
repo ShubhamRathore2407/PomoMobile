@@ -56,75 +56,70 @@ const Form: React.FC<Props> = ({setShowForm}) => {
   };
 
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      style={styles.blurOverlay}
-      onPress={() => setShowForm(false)}>
-      <View style={styles.formCard}>
-        <View style={styles.datePickerButton}>
+    <View style={styles.formCard}>
+      <View style={styles.datePickerButton}>
+        <Icon
+          onPress={() => setShowForm(false)}
+          type={IconType.Ionicons}
+          name="close-outline"
+          size={26}
+          color="gray"
+        />
+        <View style={styles.saveContainer}>
           <Icon
-            onPress={() => setShowForm(false)}
+            onPress={showDatepicker}
             type={IconType.Ionicons}
-            name="close-outline"
-            size={26}
+            name="time-outline"
+            size={24}
             color="gray"
           />
-          <View style={styles.saveContainer}>
-            <Icon
-              onPress={showDatepicker}
-              type={IconType.Ionicons}
-              name="time-outline"
-              size={24}
-              color="gray"
-            />
-            <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
-              <Text style={styles.saveButtonText}>Save</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+            <Text style={styles.saveButtonText}>Save</Text>
+          </TouchableOpacity>
         </View>
-
-        {targetDate && (
-          <Text style={styles.scheduledText}>
-            Scheduling on {numberToDayMap[targetDate?.getDay()].substring(0, 3)}{' '}
-            , {numberToMonthMap[targetDate?.getMonth()].substring(0, 3)}{' '}
-            {targetDate?.getDate()}
-          </Text>
-        )}
-        {showDatePicker && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={targetDate || new Date()}
-            mode="date"
-            is24Hour={true}
-            display="default"
-            onChange={handleDateChange}
-          />
-        )}
-        <TextInput
-          style={styles.input}
-          placeholder="Title"
-          onChangeText={text => setTitle(text)}
-          value={title}
-          placeholderTextColor={palette.title}
-        />
-        <TextInput
-          style={[styles.input]}
-          placeholder="Description"
-          onChangeText={text => setDescription(text)}
-          value={description}
-          multiline
-          placeholderTextColor={palette.title}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Target time (min)"
-          onChangeText={text => setTargetTime(text)}
-          value={targetTime !== null ? targetTime.toString() : ''}
-          placeholderTextColor={palette.title}
-          keyboardType="numeric"
-        />
       </View>
-    </TouchableOpacity>
+
+      {targetDate && (
+        <Text style={styles.scheduledText}>
+          Scheduling on {numberToDayMap[targetDate?.getDay()].substring(0, 3)} ,{' '}
+          {numberToMonthMap[targetDate?.getMonth()].substring(0, 3)}{' '}
+          {targetDate?.getDate()}
+        </Text>
+      )}
+      {showDatePicker && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={targetDate || new Date()}
+          mode="date"
+          is24Hour={true}
+          display="default"
+          onChange={handleDateChange}
+        />
+      )}
+      <TextInput
+        style={styles.input}
+        placeholder="Title"
+        onChangeText={text => setTitle(text)}
+        value={title}
+        placeholderTextColor={palette.title}
+      />
+      <TextInput
+        style={[styles.input]}
+        placeholder="Description"
+        onChangeText={text => setDescription(text)}
+        value={description}
+        multiline
+        placeholderTextColor={palette.title}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Target time (min)"
+        onChangeText={text => setTargetTime(text)}
+        value={targetTime !== null ? targetTime.toString() : ''}
+        placeholderTextColor={palette.title}
+        keyboardType="numeric"
+      />
+    </View>
   );
 };
 
