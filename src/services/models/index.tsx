@@ -6,6 +6,7 @@ export interface TaskItemProps {
   targetTime: string | null;
   description?: string;
   timeTaken?: number;
+  softDeleted?:boolean
 }
 
 export interface ProfileProps {

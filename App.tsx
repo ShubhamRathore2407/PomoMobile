@@ -8,7 +8,7 @@ import Navigation from './src/navigation';
 
 export default function App() {
   return (
-    <RealmProvider schema={[Profile, Task]} schemaVersion={13}>
+    <RealmProvider schema={[Profile, Task]} schemaVersion={14}>
       <Navigation />
     </RealmProvider>
   );

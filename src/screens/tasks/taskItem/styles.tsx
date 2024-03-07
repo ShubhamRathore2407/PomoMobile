@@ -3,7 +3,7 @@ import { brand, palette } from "../../../utils/theme/themes";
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: brand.primaryMainLight,
+    backgroundColor: "black",
     borderRadius: 8,
     marginVertical: 4,
     marginHorizontal: 2,

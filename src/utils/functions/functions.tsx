@@ -1,5 +1,6 @@
 import {
   GroupTasksByDateProps,
+  Status,
   TaskItemProps,
   TaskType,
 } from '../../services/models';
@@ -37,6 +38,19 @@ export const getTodayTasks = (tasks: Realm.Results<TaskItemProps>) => {
     endOfDay,
   );
   return todayTasks;
+};
+
+export const getStatusBasedSortedTasks = (
+  tasks: Realm.Results<TaskItemProps>,
+) => {
+  const updatedTasks = tasks.filter(tasks => tasks.softDeleted === false);
+  const pendingTasks = updatedTasks.filter(
+    task => task.status === Status.PENDING,
+  );
+  const completedTasks = updatedTasks.filter(
+    task => task.status === Status.COMPLETED,
+  );
+  return [...pendingTasks, ...completedTasks];
 };
 
 export const getFutureTasks = (tasks: Realm.Results<TaskItemProps>) => {

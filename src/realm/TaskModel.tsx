@@ -9,6 +9,7 @@ export class Task extends Realm.Object<Task> {
   description!: string;
   status!: Status | Status.PENDING;
   targetTime!: string | null;
+  softDeleted!: boolean
 
   static generate(task: TaskItemProps) {
     return {
@@ -19,6 +20,7 @@ export class Task extends Realm.Object<Task> {
       status: task.status,
       timeTaken: 0,
       activeOn: task.activeOn,
+      softDeleted: false
     };
   }
 
@@ -33,6 +35,7 @@ export class Task extends Realm.Object<Task> {
       targetTime: 'string',
       timeTaken: 'int',
       description: 'string',
+      softDeleted: 'bool'
     },
   };
 }
